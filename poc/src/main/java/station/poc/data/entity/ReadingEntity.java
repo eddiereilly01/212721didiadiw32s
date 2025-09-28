@@ -15,6 +15,8 @@ public class ReadingEntity {
     @Column(name = "sensor_id")
     private Integer sensorId;
     private String metric;
+    @Column(name = "reading_timestamp")
     private LocalDateTime timestamp;
+    @Column(name = "reading_value")
     private Float value;
 }

@@ -11,6 +11,12 @@ import java.util.List;
 @RestController
 public class ApiController {
 
+    private final ApiService apiService;
+    public ApiController(ApiService apiService){
+        this.apiService = apiService;
+    }
+
+
     @GetMapping("/query/")
     ResponseEntity<ApiResponseModel> query(@RequestParam List<Integer> ids, @RequestParam(required = false) List<String> metrics, @RequestParam(required = false) String statistic, @RequestParam(required = false) String begin, @RequestParam(required = false) String end) {
         log.info("GET: Fetching sensor data for sensors with query params: ids[{}], metrics[{}], statistic: {}, begin: {}, end: {}", ids, metrics, statistic, begin, end);
@@ -24,9 +30,10 @@ public class ApiController {
         return ResponseEntity.ok(new ApiResponseModel(null));
     }
 
-    @PostMapping("/create-reading")
+    @PostMapping("/send-reading")
     public ResponseEntity<String> createReading(@RequestBody SendReadingModel request){
         log.info("POST: Adding reading data {}", request);
+        apiService.addReading(request);
         return ResponseEntity.ok("Successfully saved reading.");
     }
 }
