@@ -1,4 +1,4 @@
-package station.poc;
+package station.poc.services;
 
 import org.springframework.stereotype.Service;
 import station.poc.data.entity.SensorEntity;

@@ -3,6 +3,7 @@ package station.poc;
 import org.junit.jupiter.api.Test;
 import station.poc.data.models.MetricModel;
 import station.poc.data.type.MetricType;
+import station.poc.services.MetricService;
 
 import java.util.List;
 

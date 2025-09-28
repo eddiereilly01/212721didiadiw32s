@@ -6,6 +6,8 @@ import station.poc.data.entity.ReadingEntity;
 import station.poc.data.models.ReadingModel;
 import station.poc.data.models.SendReadingModel;
 import station.poc.data.repository.ReadingRepository;
+import station.poc.services.MapperService;
+import station.poc.services.ReadingService;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;

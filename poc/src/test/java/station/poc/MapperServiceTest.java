@@ -5,6 +5,7 @@ import station.poc.data.entity.ReadingEntity;
 import station.poc.data.entity.SensorEntity;
 import station.poc.data.models.SendReadingModel;
 import station.poc.data.models.SensorModel;
+import station.poc.services.MapperService;
 
 import java.time.LocalDateTime;
 import java.util.List;
