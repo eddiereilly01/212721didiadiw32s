@@ -1,6 +1,4 @@
 package station.poc.data.entity;
-
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,7 +10,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class SensorEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;

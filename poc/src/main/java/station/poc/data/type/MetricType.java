@@ -1,5 +1,4 @@
 package station.poc.data.type;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
