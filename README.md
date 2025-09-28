@@ -1,5 +1,6 @@
 # Set up 
 run mvn clean install
+
 mvn spring-boot:run 
 
 Query API at localhost:8080/sensors/ 
