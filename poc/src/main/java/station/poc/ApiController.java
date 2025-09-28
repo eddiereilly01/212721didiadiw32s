@@ -3,10 +3,10 @@ package station.poc;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import station.poc.data.entity.SensorEntity;
 import station.poc.data.models.ApiResponseModel;
 import station.poc.data.models.SendReadingModel;
-import station.poc.data.models.SensorModel;
+import station.poc.data.type.MetricType;
+import station.poc.services.ApiService;
 
 import java.util.List;
 
@@ -26,7 +26,6 @@ public class ApiController {
         log.info("GET: Fetching sensor data for sensors with query params: ids[{}], metrics[{}], statistic: {}, begin: {}, end: {}", ids, metrics, statistic, begin, end);
         ApiResponseModel responseModel = apiService.query(ids, metrics, statistic, begin, end);
         return ResponseEntity.ok(responseModel);
-
     }
 
     @GetMapping("/query/all")
@@ -39,7 +38,26 @@ public class ApiController {
 
     @PostMapping("/send-reading")
     public ResponseEntity<String> sendReading(@RequestBody SendReadingModel request) {
-        log.info("POST: Adding reading data {}", request);
+        log.info("POST: Adding reading data sensor_id={}, value={} metric={} timestamp={}", request.getSensorId(), request.getValue(), request.getMetric(), request.getTimestamp());
+
+        try{
+          MetricType type = MetricType.valueOf(request.getMetric().toUpperCase());
+        }catch (Exception e){
+            return  ResponseEntity.badRequest().body("User input error. Ensure your request includes one of the following metrics: TEMPERATURE, HUMIDITY, PRECIPITATION, WIND_SPEED");
+        }
+
+        if((request.getMetric() == null) ){
+            return  ResponseEntity.badRequest().body("User input error. POST request must include a metric field.");
+        }
+
+        if((request.getValue() == null) ){
+            return  ResponseEntity.badRequest().body("User input error. POST request must include a value field.");
+        }
+
+        if((request.getSensorId() == null)){
+          return  ResponseEntity.badRequest().body("User input error. POST request must include a sensor_id field.");
+        }
+        
         apiService.addReading(request);
         return ResponseEntity.ok("Successfully saved reading.");
     }

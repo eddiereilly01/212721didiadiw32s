@@ -7,7 +7,10 @@ import station.poc.data.models.MetricModel;
 import station.poc.data.models.ReadingModel;
 import station.poc.data.models.SensorModel;
 import station.poc.data.repository.SensorRepository;
-import station.poc.data.type.MetricType;
+import station.poc.services.MapperService;
+import station.poc.services.MetricService;
+import station.poc.services.ReadingService;
+import station.poc.services.SensorService;
 
 import java.util.Collections;
 import java.util.List;
