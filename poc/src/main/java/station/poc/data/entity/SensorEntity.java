@@ -16,4 +16,8 @@ public class SensorEntity {
     public String name;
     public String description;
     public String metrics;
+
+    public SensorEntity(){
+    }
+
 }

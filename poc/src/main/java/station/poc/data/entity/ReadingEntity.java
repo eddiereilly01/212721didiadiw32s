@@ -1,6 +1,7 @@
 package station.poc.data.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import java.time.LocalDateTime;
@@ -8,6 +9,7 @@ import java.time.LocalDateTime;
 @Table(name = "readings")
 @Getter
 @Setter
+@AllArgsConstructor
 public class ReadingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,4 +21,7 @@ public class ReadingEntity {
     private LocalDateTime timestamp;
     @Column(name = "reading_value")
     private Float value;
+
+    public ReadingEntity() {
+    }
 }
